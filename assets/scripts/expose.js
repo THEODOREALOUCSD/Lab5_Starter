@@ -2,7 +2,9 @@
 
 window.addEventListener('DOMContentLoaded', init);
 
+
 function init() {
+  const jsConfetti = new JSConfetti();
   // TODO
   var hornSelect = document.getElementById('horn-select');
   var imgSource = document.querySelector("img[src='assets/images/no-image.png']");
@@ -29,6 +31,15 @@ function init() {
     if (slider.value >= 67){
       imgSourceSlider.setAttribute("src", 'assets/icons/volume-level-3.svg');
     }
+    
   });
   
+  var button = document.querySelector('button');
+  button.addEventListener('click', (event) => {
+    audioSelect.volume = slider.value / 100;
+    audioSelect.play();
+    if(hornSelect.value == 'party-horn'){
+      jsConfetti.addConfetti();
+    }
+  });
 }
